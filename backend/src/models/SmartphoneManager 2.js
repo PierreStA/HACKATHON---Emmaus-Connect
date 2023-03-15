@@ -5,12 +5,6 @@ class SmartphoneManager extends AbstractManager {
     super({ table: "smartphone" });
   }
 
-  displayPhone() {
-    return this.database.query(
-      `select smartphone.*, etat from smartphone join etat on smartphone.idetat = etat.id;`
-    );
-  }
-
   insert(smartphone) {
     return this.database.query(
       `insert into ${this.table} (marque, modele, ram, stockage, indice_antutu, ecran, reseau, android, chargeurcable, idetat) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,

@@ -2,7 +2,7 @@ const models = require("../models");
 
 const browse = (req, res) => {
   models.smartphone
-    .displayPhone()
+    .findAll()
     .then(([rows]) => {
       res.send(rows);
     })

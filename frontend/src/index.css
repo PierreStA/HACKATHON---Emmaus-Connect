@@ -3,11 +3,15 @@
 @tailwind utilities;
 
 * {
-    @apply box-border m-0 p-0;
+  @apply box-border m-0 p-0;
 }
 
 html,
 body,
 #root {
-    @apply h-full;
+  @apply h-full;
+}
+
+.btn-purple {
+  @apply bg-purple rounded-xl text-white w-[300px] h-[70px] drop-shadow-button font-nunito font-extrabold text-2xl;
 }
