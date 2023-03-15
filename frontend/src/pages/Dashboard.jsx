@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Smartphones from "../components/Smartphones";
+import Navbar from "../components/Navbar";
 
 function Dashboard() {
   const [smartphones, setSmartphones] = useState([]);
@@ -13,8 +14,9 @@ function Dashboard() {
   console.log(smartphones);
   return (
     <div>
-      <h1>Nos smartphones</h1>
-      <div>
+      <Navbar />
+      <h1 className=" flex justify-center m-8 text-xl font-semibold">Nos smartphones</h1>
+      <div className="grid gap-4 grid-cols-3 p-6">
         {smartphones.map((smartphone) => (
           <Smartphones
             key={smartphone.id}
@@ -24,6 +26,7 @@ function Dashboard() {
             ram={smartphone.ram}
             reseau={smartphone.reseau}
             ecran={smartphone.ecran}
+            android={smartphone.android}
             antutu={smartphone.indice_antutu}
             etat={smartphone.etat}
           />

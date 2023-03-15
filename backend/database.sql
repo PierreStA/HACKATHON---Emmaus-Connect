@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `ram` INT NOT NULL,
   `stockage` INT NOT NULL,
   `indice_antutu` INT NOT NULL,
-  `ecran` INT NOT NULL,
+  `ecran` FLOAT NOT NULL,
   `reseau` INT NOT NULL,
   `android` INT NOT NULL,
   `chargeurcable` TINYINT NOT NULL,
