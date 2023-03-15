@@ -22,15 +22,12 @@ USE `emausconnect` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `emausconnect`.`etat` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `DEEE` TINYINT NULL,
-  `reparable` TINYINT NULL,
-  `bloque` TINYINT NULL,
-  `reconditionnable` TINYINT NULL,
-  `reconditionne` TINYINT NULL,
+  `etat` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
 
+INSERT INTO `emausconnect`.`etat` (`id`, `etat`) VALUES ('1', 'DEEE'), ('2', 'Réparable'), ('3', 'Bloqué'), ('4', 'Reconditionnable'), ('5', 'Reconditionné');
 
 -- -----------------------------------------------------
 -- Table `emausconnect`.`smartphone`
@@ -47,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `android` INT NOT NULL,
   `chargeurcable` TINYINT NOT NULL,
   `idetat` INT NOT NULL,
+  `code_model` VARCHAR(45),
   PRIMARY KEY (`id`, `idetat`),
   INDEX `fk_smartphone_etat_idx` (`idetat` ASC) VISIBLE,
   CONSTRAINT `fk_smartphone_etat`
@@ -56,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-
+INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stockage`, `indice_antutu`, `ecran`, `reseau`, `android`, `chargeurcable`, `idetat`) VALUES ('1', 'Samsung', 'Galaxy S23', '8', '128', '1198962', '6.1', '5', '13', '1', '4'), ('2', 'Oppo', 'Reno 2Z', '8', '128', '213989', '6.5', '4', '10', '2', '2'), ('3', 'Xiaomi', 'Redmi Note 11', '4', '64', '248639', '6.4', '4', '11', '1', '5');
 -- -----------------------------------------------------
 -- Table `emausconnect`.`user`
 -- -----------------------------------------------------
