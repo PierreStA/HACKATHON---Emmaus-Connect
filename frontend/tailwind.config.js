@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        green: "#05ACB0",
+        darkgreen: "#05ACB0",
         purple: "#272350",
         red: "#E53750",
         yellow: "#FFAB1D",
@@ -17,3 +17,12 @@ module.exports = {
   },
   plugins: [],
 };
+
+// /** @type {import('tailwindcss').Config} */
+// module.exports = {
+//   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+//   theme: {
+//     extend: {},
+//   },
+//   plugins: [],
+// };

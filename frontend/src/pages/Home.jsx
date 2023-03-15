@@ -1,5 +1,4 @@
 import AbbePierreCitation from "../components/AbbePierreCitation";
-import Antutu from "../components/Antutu";
 
 export default function Home() {
   return (
@@ -14,5 +13,13 @@ export default function Home() {
         </div>
       </div>
     </header>
+    <div>
+      <header>
+        <AbbePierreCitation />
+        <button type="button" className="btn-darkgreen">
+          Connection
+        </button>
+      </header>
+    </div>
   );
 }
