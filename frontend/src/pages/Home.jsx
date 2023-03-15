@@ -8,6 +8,9 @@ export default function Home() {
         <button type="button" className="btn-darkgreen">
           Connection
         </button>
+        <button type="button" className="btn-yellow">
+          Connection
+        </button>
       </header>
     </div>
   );

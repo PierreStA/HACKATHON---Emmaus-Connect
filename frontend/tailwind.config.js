@@ -3,6 +3,9 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        caveat: ["Caveat", "sans-serif"],
+      },
       colors: {
         darkgreen: "#05ACB0",
         purple: "#272350",
@@ -17,12 +20,3 @@ module.exports = {
   },
   plugins: [],
 };
-
-// /** @type {import('tailwindcss').Config} */
-// module.exports = {
-//   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
-//   theme: {
-//     extend: {},
-//   },
-//   plugins: [],
-// };

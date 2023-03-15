@@ -24,7 +24,7 @@ function AbbePierreCitation() {
 
   return (
     <div>
-      <p className="text-2xl text-red">
+      <p className="text-base font-caveat text-lg ">
         "{citation}"<br /> Abbé Pierre
       </p>
     </div>
