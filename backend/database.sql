@@ -22,15 +22,12 @@ USE `emausconnect` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `emausconnect`.`etat` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `DEEE` TINYINT NULL,
-  `reparable` TINYINT NULL,
-  `bloque` TINYINT NULL,
-  `reconditionnable` TINYINT NULL,
-  `reconditionne` TINYINT NULL,
+  `etat` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE)
 ENGINE = InnoDB;
 
+INSERT INTO `emausconnect`.`etat` (`id`, `etat`) VALUES ('1', 'DEEE'), ('2', 'Réparable'), ('3', 'Bloqué'), ('4', 'Reconditionnable'), ('5', 'Reconditionné');
 
 -- -----------------------------------------------------
 -- Table `emausconnect`.`smartphone`
@@ -47,6 +44,7 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `android` INT NOT NULL,
   `chargeurcable` TINYINT NOT NULL,
   `idetat` INT NOT NULL,
+  `code_model` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`, `idetat`),
   INDEX `fk_smartphone_etat_idx` (`idetat` ASC) VISIBLE,
   CONSTRAINT `fk_smartphone_etat`
