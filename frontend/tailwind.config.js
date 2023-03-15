@@ -3,8 +3,11 @@ module.exports = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      fontFamily: {
+        caveat: ["Caveat", "sans-serif"],
+      },
       colors: {
-        green: "#05ACB0",
+        darkgreen: "#05ACB0",
         purple: "#272350",
         red: "#E53750",
         yellow: "#FFAB1D",

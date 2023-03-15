@@ -1,17 +1,28 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Inter:wght@300;400;500;600&family=Philosopher:ital,wght@0,400;0,700;1,400&display=swap');
 
-* {
-  @apply box-border m-0 p-0;
-}
+ @tailwind base;
+ @tailwind components;
+ @tailwind utilities;
 
-html,
-body,
-#root {
-  @apply h-full;
-}
+ * {
+   @apply box-border m-0 p-0;
+ }
 
-.btn-purple {
-  @apply bg-purple rounded-xl text-white w-[300px] h-[70px] drop-shadow-button font-nunito font-extrabold text-2xl;
-}
+ html,
+ body,
+ #root {
+   @apply h-full;
+ }
+
+ #root {
+   @apply flex flex-col;
+ }
+
+ .btn-darkgreen {
+   @apply bg-darkgreen rounded-xl text-white w-[300px] h-[70px] drop-shadow-button text-2xl;
+ }
+ 
+ .btn-yellow {
+   @apply bg-yellow rounded-xl text-white w-[300px] h-[70px] drop-shadow-button text-2xl;
+ }
+
