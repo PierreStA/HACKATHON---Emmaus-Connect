@@ -1,8 +1,10 @@
+import Navbar from "@components/Navbar";
 import AbbePierreCitation from "../components/AbbePierreCitation";
 
 export default function Home() {
   return (
     <div className="bg-gradient-to-r from-indigo-900 via-blue-500 to-blue-300 h-full">
+      <Navbar />
       <div className="flex flex-col items-center justify-center">
         <img src="" alt="" />
         <AbbePierreCitation />
