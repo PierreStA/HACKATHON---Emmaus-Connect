@@ -35,21 +35,6 @@ function Calculette() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setNoteTel(valA + valM + valS + ((valA + valM + valS) / 100) * ponderation);
-    // if (noteTel <= 90) {
-    //   setCategorie("1-HC");
-    // }
-    // if (noteTel > 90 && noteTel <= 165) {
-    //   setCategorie("2-C");
-    // }
-    // if (noteTel > 165 && noteTel <= 255) {
-    //   setCategorie("3-B");
-    // }
-    // if (noteTel > 255 && noteTel <= 375) {
-    //   setCategorie("4-A");
-    // }
-    // if (noteTel > 375) {
-    //   setCategorie("5-Premium");
-    // }
   };
 
   const HandleMarque = (e) => {
