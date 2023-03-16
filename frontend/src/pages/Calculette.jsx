@@ -136,13 +136,13 @@ function Calculette() {
   // console.log(noteTel);
 
   return (
-    <div className="flex flex-col  text-left h-screen">
+    <div className="flex flex-col justify-evenly items-center  gap-4 text-left h-screen">
       <Navbar />
-      <div className="flex flex-row gap-10">
-        <div className="block w-6/12 rounded-lg bg-white p-6 shadow-lg  dark:bg-neutral-700 items-center justify-center">
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col w-10/12">
-              <div className="relative mb-6" data-te-input-wrapper-init>
+      <div className="flex justify-around gap-10 w-full">
+        <div className=" w-96 shadow-lg">
+          <form className=" p-2" onSubmit={handleSubmit}>
+            <div className="flex flex-col ">
+              <div className=" mb-6" data-te-input-wrapper-init>
                 <input
                   type="text"
                   onChange={HandleMarque}
@@ -230,7 +230,7 @@ function Calculette() {
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
-                <button type="submit" className="btn-yellow ml-12">
+                <button type="submit" className="btn-yellow justify-center">
                   ok
                 </button>
               </div>
@@ -238,14 +238,14 @@ function Calculette() {
           </form>
         </div>
         <div className="flex justify-center">
-          <div className="block max-w-sm rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-700">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+          <div className="block justify-center w-72 rounded-lg bg-white p-6 shadow-lg ">
+            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:black">
               {`Note du téléphone `}
             </h5>
             <div className="text-center">
               <h4 className="">{`${noteTel}`}</h4>
             </div>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
+            <p className="mb-4 text-base text-neutral-600 dark:text-black">
               Besoin d'un Qr Code ?
             </p>
             <div>
@@ -262,7 +262,11 @@ function Calculette() {
                 {showQrCode && (
                   <div className="modal">
                     <canvas ref={canvasRef} />
-                    <button type="button" onClick={handleExportPdf}>
+                    <button
+                      type="button"
+                      onClick={handleExportPdf}
+                      className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                    >
                       Exporter en PDF
                     </button>
                   </div>
@@ -272,7 +276,7 @@ function Calculette() {
           </div>
         </div>
         <div>{noteTel}</div>
-        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu}/>
+        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
   );
