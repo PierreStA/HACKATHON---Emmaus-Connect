@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import papa from "papaparse";
 import Button from "./Button";
 
-function Antutu() {
+function Antutu({ setModele, setIndiceAntutu }) {
   const [phones, setPhones] = useState([]);
   const [field, setField] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
@@ -29,7 +29,7 @@ function Antutu() {
 
   const prepareJsonData = (data) => {
     // eslint-disable-next-line
-    const json = data.map((line, index) => {
+    const json = data.slice(0, 8).map((line, index) => {
       if (index > 0) {
         let obj = {};
         data[0].forEach((el, j) => (obj = { ...obj, [el]: line[j] }));
@@ -38,6 +38,15 @@ function Antutu() {
     });
     json.shift();
     setPhones(json);
+  };
+
+  const addResultToCalc = (phone) => {
+    setModele(
+      phone.target.parentElement.childNodes[1].children[0].lastChild.data
+    );
+    setIndiceAntutu(
+      phone.target.parentElement.childNodes[1].children[1].lastChild.data
+    );
   };
 
   useEffect(() => {
@@ -50,8 +59,18 @@ function Antutu() {
   }, []);
 
   return (
-    <div className="flex flex-col m-4 p-4  items-center gap-4 rounded-lg shadow-lg h-fit">
-      <label htmlFor="model">Phone model</label>
+    <div
+      className="flex flex-col m-4 p-4 justify-center items-center gap-4
+      rounded-lg
+      shadow-lg
+      h-fit"
+    >
+      <label
+        htmlFor="model"
+        className="font-medium text-xl uppercase tracking-widest"
+      >
+        Phone model
+      </label>
       <input
         className="border-2 w-96"
         name="model"
@@ -59,14 +78,33 @@ function Antutu() {
         onChange={handleInput}
         onKeyDown={handleKeyPress}
       />
-      <Button onClick={handleFilter}>Trouver le score Antutu</Button>
-      <div className="phoneCards">
+      {field ? (
+        <Button onClick={handleFilter}>Trouver le score Antutu</Button>
+      ) : (
+        <Button onClick={handleFilter}>Tous les scores Antutu</Button>
+      )}
+      <div className="phoneCards grid grid-cols-2 gap-2">
         {filteredPhones &&
           filteredPhones.map((phone) => (
-            <div key={phone.id} className="flex gap-2">
-              <p>Modèle : {phone.model}</p>
-              <p>Score Antutu : {phone.antutu_score}</p>
-            </div>
+            <button
+              className="relative"
+              onClick={addResultToCalc}
+              type="button"
+            >
+              <div className="absolute w-full h-full " />
+              <div
+                key={phone.id}
+                className="flex flex-col gap-2 rounded-lg shadow-md p-4"
+              >
+                <p>
+                  <span className="text-red">Modèle : </span> {phone.model}
+                </p>
+                <p>
+                  <span className="text-red">Score Antutu : </span>
+                  {phone.antutu_score}
+                </p>
+              </div>
+            </button>
           ))}
       </div>
       <div>

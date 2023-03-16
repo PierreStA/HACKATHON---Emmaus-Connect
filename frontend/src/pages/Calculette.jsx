@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import QRCode from "qrcode";
 import JsPDF from "jspdf";
 import Navbar from "../components/Navbar";
+import Button from "../components/Button";
 
 import Antutu from "../components/Antutu";
 
@@ -245,10 +246,14 @@ function Calculette() {
                   placeholder="Ponderation"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
-
-                <button type="submit" className="btn-yellow items-center ">
-                  ok
-                </button>
+                <div className=" flex justify-center ">
+                  <button
+                    type="submit"
+                    className=" justify-center w-1/3 inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
+                  >
+                    ok
+                  </button>
+                </div>
               </div>
             </div>
           </form>
@@ -260,6 +265,7 @@ function Calculette() {
             </h5>
             <div className="text-center">
               <h4 className="bg-yellow">{`${noteTel}`}</h4>
+              <h4 className="text-black text-transform: capitalize;">{`categorie: ${categorie}`}</h4>
             </div>
             <p className="mb-4 mt-4 text-base text-center text-neutral-600 dark:text-black">
               Besoin d'un Qr Code ?
@@ -272,7 +278,7 @@ function Calculette() {
                 >
                   <button
                     type="submit"
-                    className="inline-flex items-center  px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                    className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
                   >
                     Générer le QR code
                   </button>
@@ -282,13 +288,13 @@ function Calculette() {
                   <div className="modal ">
                     <canvas ref={canvasRef} />
                     <div className="flex justify-center">
-                      <button
+                      <Button
                         type="button"
                         onClick={handleExportPdf}
                         className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
                       >
                         Exporter en PDF
-                      </button>
+                      </Button>
                     </div>
                   </div>
                 )}
@@ -296,7 +302,6 @@ function Calculette() {
             </div>
           </div>
         </div>
-        <div>{noteTel}</div>
         <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
