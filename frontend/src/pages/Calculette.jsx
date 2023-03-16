@@ -29,12 +29,29 @@ function Calculette() {
   const [valM, setValM] = useState(0);
   const [valS, setValS] = useState(0);
   const [noteTel, setNoteTel] = useState(null);
-  const [ponderation, setPonderation] = useState(null);
+  const [ponderation, setPonderation] = useState();
+  const [categorie, setCategorie] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setNoteTel(valA + valM + valS + ((valA + valM + valS) / 100) * ponderation);
+    // if (noteTel <= 90) {
+    //   setCategorie("1-HC");
+    // }
+    // if (noteTel > 90 && noteTel <= 165) {
+    //   setCategorie("2-C");
+    // }
+    // if (noteTel > 165 && noteTel <= 255) {
+    //   setCategorie("3-B");
+    // }
+    // if (noteTel > 255 && noteTel <= 375) {
+    //   setCategorie("4-A");
+    // }
+    // if (noteTel > 375) {
+    //   setCategorie("5-Premium");
+    // }
   };
+
   const HandleMarque = (e) => {
     setMarque(e.target.value);
   };
@@ -43,7 +60,7 @@ function Calculette() {
   };
   const HandleRam = (e) => {
     setRam(parseInt(e.target.value, 10));
-    setValM(e.target.value * 10);
+    setValM(e.target.value * 2);
   };
   const HandleStockage = (e) => {
     setStockage(parseInt(e.target.value, 10));
@@ -129,11 +146,27 @@ function Calculette() {
     }
   }, [showQrCode, formData]);
 
+  useEffect(() => {
+    if (noteTel <= 90) {
+      setCategorie("1-HC");
+    } else if (noteTel <= 165) {
+      setCategorie("2-C");
+    } else if (noteTel <= 255) {
+      setCategorie("3-B");
+    } else if (noteTel <= 375) {
+      setCategorie("4-A");
+    } else {
+      setCategorie("5-Premium");
+    }
+  }, [noteTel]);
+  
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
   console.log(formData);
   // console.log(noteTel);
+
+  
 
   return (
     <div className="flex flex-col  text-left h-screen">
@@ -243,7 +276,8 @@ function Calculette() {
               {`Note du téléphone `}
             </h5>
             <div className="text-center">
-              <h4 className="">{`${noteTel}`}</h4>
+              <h4 className="text-gray-50 text-transform: capitalize;">{`note: ${noteTel}`}</h4>
+              <h4 className="text-gray-50 text-transform: capitalize;">{`categorie: ${categorie}`}</h4>
             </div>
             <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
               Besoin d'un Qr Code ?
