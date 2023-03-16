@@ -16,7 +16,7 @@ function Dashboard() {
     <div>
       <Navbar />
       <h1 className=" flex justify-center m-8 text-xl font-semibold">Nos smartphones</h1>
-      <div className="grid gap-4 grid-cols-3 p-6">
+      <div className="grid gap-4 grid-cols-2 p-6">
         {smartphones.map((smartphone) => (
           <Smartphones
             key={smartphone.id}
@@ -29,6 +29,7 @@ function Dashboard() {
             android={smartphone.android}
             antutu={smartphone.indice_antutu}
             etat={smartphone.etat}
+            image={smartphone.image_source}
           />
         ))}
       </div>
