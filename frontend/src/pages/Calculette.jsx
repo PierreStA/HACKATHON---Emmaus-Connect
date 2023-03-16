@@ -136,7 +136,7 @@ function Calculette() {
   // console.log(noteTel);
 
   return (
-    <div className="flex flex-col justify-evenly items-center  gap-4 text-left h-screen">
+    <div className="flex flex-col justify-evenly items-center  gap-4  h-screen">
       <Navbar />
       <div className="flex justify-around gap-10 w-full">
         <div className=" w-96 shadow-lg">
@@ -154,7 +154,7 @@ function Calculette() {
                   type="text"
                   value={modele}
                   onChange={HandleModele}
-                  placeholder="modele du telephone"
+                  placeholder="Modele du telephone"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -168,7 +168,7 @@ function Calculette() {
                 <input
                   type="number"
                   onChange={HandleStockage}
-                  placeholder="stockage"
+                  placeholder="Stockage"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -176,35 +176,35 @@ function Calculette() {
                   type="number"
                   value={indiceAntutu}
                   onChange={HandleindiceAntutu}
-                  placeholder="indice antutu"
+                  placeholder="Indice antutu"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="number"
                   onChange={HandleEcran}
-                  placeholder="taille de l'écran"
+                  placeholder="Taille de l'écran"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="number"
                   onChange={HandleReseau}
-                  placeholder="reseau max"
+                  placeholder="Reseau max"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="number"
                   onChange={HandleAndroid}
-                  placeholder="version android"
+                  placeholder="Version android"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="text"
                   onChange={HandleChargeurcable}
-                  placeholder="chargeur"
+                  placeholder="Chargeur"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -219,7 +219,7 @@ function Calculette() {
                 <input
                   type="text"
                   onChange={HandleCodeModel}
-                  placeholder="code modele"
+                  placeholder="Code modele"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -238,44 +238,48 @@ function Calculette() {
           </form>
         </div>
         <div className="flex justify-center">
-          <div className="block justify-center w-72 rounded-lg bg-white p-6 shadow-lg ">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:black">
+          <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg ">
+            <h5 className="mb-2 text-xl text-center font-medium leading-tight text-neutral-800 dark:black">
               {`Note du téléphone `}
             </h5>
             <div className="text-center">
-              <h4 className="">{`${noteTel}`}</h4>
+              <h4 className="bg-yellow">{`${noteTel}`}</h4>
             </div>
-            <p className="mb-4 text-base text-neutral-600 dark:text-black">
+            <p className="mb-4 mt-4 text-base text-center text-neutral-600 dark:text-black">
               Besoin d'un Qr Code ?
             </p>
             <div>
               <div>
-                <form onSubmit={handleFormSubmit}>
+                <form
+                  className="flex justify-center"
+                  onSubmit={handleFormSubmit}
+                >
                   <button
                     type="submit"
-                    className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                    className="inline-flex items-center  px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
                   >
                     Générer le QR code
                   </button>
                 </form>
 
                 {showQrCode && (
-                  <div className="modal">
+                  <div className="modal ">
                     <canvas ref={canvasRef} />
-                    <button
-                      type="button"
-                      onClick={handleExportPdf}
-                      className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
-                    >
-                      Exporter en PDF
-                    </button>
+                    <div className="flex justify-center">
+                      <button
+                        type="button"
+                        onClick={handleExportPdf}
+                        className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                      >
+                        Exporter en PDF
+                      </button>
+                    </div>
                   </div>
                 )}
               </div>
             </div>
           </div>
         </div>
-        <div>{noteTel}</div>
         <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
