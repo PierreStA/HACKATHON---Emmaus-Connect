@@ -2,7 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Calculette from "./pages/Calculette";
 import Dashboard from "./pages/Dashboard";
-import Navbar from "./components/Navbar";
+import Api from "./pages/Api";
 
 function App() {
   return (
@@ -11,8 +11,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/calculette" element={<Calculette />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/api" element={<Api />} />
       </Routes>
-      <Navbar />
     </div>
   );
 }
