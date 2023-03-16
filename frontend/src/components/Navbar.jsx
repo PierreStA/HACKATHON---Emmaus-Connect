@@ -41,7 +41,7 @@ export default function Menu() {
               <ul className="flex flex-col lg:flex-row list-none lg:ml-auto ">
                 <li className="nav-item">
                   <ul className="px-3 py-2 flex items-center text-base uppercase font-bold leading-snug text-black hover:opacity-75">
-                    <NavLink to="/recherche">Recherche</NavLink>
+                    <NavLink to="/import">Import</NavLink>
                   </ul>
                 </li>
                 <li className="nav-item">

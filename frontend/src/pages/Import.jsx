@@ -36,7 +36,7 @@ function Import() {
       <div className="fixed w-screen">
         <Navbar />
       </div>
-      <div className="w-screen flex flex-row justify-center align-middle items-center pt-60">
+      <div className="fixed w-screen flex flex-row justify-center align-middle items-center pt-64">
         <input
           className="border-2 w-72 mr-4 ml-4 text-sm leading-4 rounded-lg p-2"
           name="url"
@@ -52,15 +52,15 @@ function Import() {
           Importer le fichier
         </button>
       </div>
-      <div className="flex justify-center mt-12">
-        {headers && (
+      <div className="fixed w-screen flex justify-center mt-80">
+        {headers.length > 0 && (
           <p>
             Vous pouvez maintenant sélectionner les colonnes que vous souhaitez
             sauvegarder en base de données
           </p>
         )}
       </div>
-      <div className="phones">
+      <div className="absolute mt-[325px]">
         <table className="mt-12">
           <thead className="m-4 bg-darkgreen">
             <tr>
@@ -70,9 +70,8 @@ function Import() {
                   <input
                     id="checkbox"
                     type="checkbox"
-                    value=""
                     name="checkbox"
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500"
+                    className="w-4 h-4 text-teal-600 bg-gray-100 border-darkgreen rounded"
                   />
                 </th>
               ))}
