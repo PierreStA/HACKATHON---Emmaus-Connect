@@ -63,7 +63,8 @@ function Antutu({ setModele, setIndiceAntutu }) {
       className="flex flex-col m-4 p-4 justify-center items-center gap-4
       rounded-lg
       shadow-lg
-      h-fit"
+      h-fit
+      hover:drop-shadow-xl"
     >
       <label
         htmlFor="model"
