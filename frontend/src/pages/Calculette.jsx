@@ -159,8 +159,8 @@ function Calculette() {
         <div className="flex justify-center">
           <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
         </div>
-        <div className=" w-96 shadow-lg">
-          <form className=" p-2" onSubmit={handleSubmit}>
+        <div className=" w-96 shadow-lg ">
+          <form className="p-2 hover:drop-shadow-lg" onSubmit={handleSubmit}>
             <h4 className="font-medium text-xl uppercase tracking-widest text-center mb-2">
               caractéristiques
             </h4>
@@ -264,7 +264,7 @@ function Calculette() {
             </div>
           </form>
         </div>
-        <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg ">
+        <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg hover:drop-shadow-2xl">
           <h5 className="mb-2  text-center leading-tight text-neutral-800 dark:black font-medium text-xl uppercase tracking-widest">
             {`Note du téléphone `}
           </h5>
