@@ -1,15 +1,18 @@
-import Navbar from "@components/Navbar";
+import { Link } from "react-router-dom";
 import AbbePierreCitation from "../components/AbbePierreCitation";
-
+import Logo from "../assets/logo_image.png";
 export default function Home() {
   return (
     <div className="bg-gradient-to-r from-indigo-900 via-blue-500 to-blue-300 h-full">
-      <Navbar />
       <div className="flex flex-col items-center justify-center">
-        <img src="" alt="" />
+        <img
+          src={Logo}
+          alt="logo"
+          className="h-[100px] w-[200px]"
+        />
         <AbbePierreCitation />
         <div className="flex flex-row">
-          <div className="h-[240px] flex items-center justify-evenly">
+          <div className="h-[240px] flex items-center gap-8">
             <input
               type="text"
               name="email"
@@ -26,9 +29,12 @@ export default function Home() {
         </div>
       </div>
       <div className="flex flex-col items-center">
-        <button type="button" className="btn-darkgreen">
-          Connection
-        </button>
+        <Link
+          to="/calculette"
+          className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+        >
+          Connexion
+        </Link>
       </div>
     </div>
   );
