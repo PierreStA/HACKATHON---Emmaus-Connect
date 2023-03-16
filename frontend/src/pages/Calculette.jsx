@@ -272,7 +272,7 @@ function Calculette() {
           </div>
         </div>
         <div>{noteTel}</div>
-        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu}/>
+        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
   );
