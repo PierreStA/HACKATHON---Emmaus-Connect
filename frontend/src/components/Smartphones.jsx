@@ -1,5 +1,4 @@
 import React from "react";
-// import image from "../assets/téléchargement.jpeg";
 
 function Smartphones({
   marque,
@@ -50,7 +49,10 @@ function Smartphones({
         </p>
         <p>{etat}</p>
       </div>
-      <img src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`} alt="S23" />
+      <img
+        src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
+        alt="apperçu du téléphone"
+      />
     </div>
   );
 }

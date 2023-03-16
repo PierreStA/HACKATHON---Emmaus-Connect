@@ -11,11 +11,13 @@ function Dashboard() {
       setSmartphones(res.data);
     });
   }, []);
-  console.log(smartphones);
+
   return (
     <div>
       <Navbar />
-      <h1 className=" flex justify-center m-8 text-xl font-semibold">Nos smartphones</h1>
+      <h1 className=" flex justify-center m-8 text-xl font-semibold">
+        Nos smartphones
+      </h1>
       <div className="grid gap-4 grid-cols-2 p-6">
         {smartphones.map((smartphone) => (
           <Smartphones
