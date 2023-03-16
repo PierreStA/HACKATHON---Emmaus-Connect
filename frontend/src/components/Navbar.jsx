@@ -53,12 +53,13 @@ export default function Menu() {
                   </ul>
                 </li>
                 <ul className="nav-item">
-                  <a
+                  <NavLink
+                    to="/dashboard"
                     className="px-3 py-2 flex items-center text-base uppercase font-bold leading-snug text-black hover:opacity-75"
                     href="#pablo"
                   >
-                    <NavLink to="/dashboard">Base de donnée</NavLink>
-                  </a>
+                    Base de donnée
+                  </NavLink>
                 </ul>
               </ul>
             </div>
