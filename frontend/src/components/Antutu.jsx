@@ -46,9 +46,8 @@ function Antutu() {
 
   return (
     <div className="App">
-      <h1>Google Data</h1>
       <label htmlFor="model">Phone model</label>
-      <input name="model" type="text" onChange={handleInput} onKeyDown={handleKeyPress} />
+      <input className="border-2" name="model" type="text" onChange={handleInput} onKeyDown={handleKeyPress} />
       <button type="button" onClick={handleFilter}>Trouver le score Antutu</button>
       <div className='phoneCards'>
         {filteredPhones && filteredPhones

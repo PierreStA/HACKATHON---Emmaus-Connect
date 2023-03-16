@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Antutu from "../components/Antutu";
 
 function Calculette() {
   const antutuArray = [
@@ -226,6 +227,7 @@ function Calculette() {
         </div>
       </form>
       <div>{noteTel}</div>
+      <Antutu />
     </div>
   );
 }
