@@ -12,12 +12,12 @@ function Calculette() {
   // const [antmin, setAntmin] = useState(0);
   const [marque, setMarque] = useState("");
   const [modele, setModele] = useState("");
-  const [ram, setRam] = useState("");
-  const [stockage, setStockage] = useState("");
+  const [ram, setRam] = useState();
+  const [stockage, setStockage] = useState();
   const [indiceAntutu, setIndiceAntutu] = useState();
-  const [ecran, setEcran] = useState("");
-  const [reseau, setReseau] = useState("");
-  const [android, setAndroid] = useState("");
+  const [ecran, setEcran] = useState();
+  const [reseau, setReseau] = useState();
+  const [android, setAndroid] = useState();
   const [chargeurcable, setChargeurcable] = useState("");
   const [idetat, setIdetat] = useState("");
   const [codeModel, setcodeModel] = useState("");
@@ -25,7 +25,7 @@ function Calculette() {
   const [valM, setValM] = useState(0);
   const [valS, setValS] = useState(0);
   const [noteTel, setNoteTel] = useState(0);
-  const [ponderation, setPonderation] = useState(null);
+  const [ponderation, setPonderation] = useState();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -101,6 +101,7 @@ function Calculette() {
                 value={marque}
                 onChange={HandleMarque}
                 placeholder="Marque du telephone"
+                alt="marque du telephone"
               />
             </label>
             <label
@@ -112,18 +113,20 @@ function Calculette() {
                 value={modele}
                 onChange={HandleModele}
                 placeholder="modele du telephone"
+                alt="modele du telephone"
               />
-            </label>{" "}
+            </label>
           </div>
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={ram}
               onChange={HandleRam}
               placeholder="RAM du telephone"
+              alt="RAM du telephone"
             />
           </label>
           <label
@@ -131,21 +134,23 @@ function Calculette() {
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={stockage}
               onChange={HandleStockage}
               placeholder="stockage"
+              alt="stockage du telephone"
             />
-          </label>{" "}
+          </label>
           <label
             className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={indiceAntutu}
               onChange={HandleindiceAntutu}
               placeholder="indice antutu"
+              alt="score antutu"
             />
           </label>
           <label
@@ -153,10 +158,11 @@ function Calculette() {
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={ecran}
               onChange={HandleEcran}
               placeholder="taille de l'écran"
+              alt="taille de l'ecran"
             />
           </label>
           <label
@@ -164,7 +170,7 @@ function Calculette() {
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={reseau}
               onChange={HandleReseau}
               placeholder="reseau max"
@@ -175,7 +181,7 @@ function Calculette() {
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={android}
               onChange={HandleAndroid}
               placeholder="version android"
@@ -217,13 +223,15 @@ function Calculette() {
             htmlFor="grid-first-name5"
           >
             <input
-              type="text"
+              type="number"
               value={ponderation}
               onChange={HandlePonderation}
               placeholder="Ponderation"
             />
           </label>
-          <button type="submit">ok</button>
+          <button type="submit" alt="soumettre le formulaire">
+            ok
+          </button>
         </div>
       </form>
       <div>{noteTel}</div>
