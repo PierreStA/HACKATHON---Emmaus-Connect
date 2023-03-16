@@ -50,7 +50,7 @@ function Antutu() {
   }, []);
 
   return (
-    <div className="flex flex-col m-4 p-4  items-center gap-4">
+    <div className="flex flex-col m-4 p-4  items-center gap-4 rounded-lg shadow-lg h-fit">
       <label htmlFor="model">Phone model</label>
       <input
         className="border-2 w-96"
