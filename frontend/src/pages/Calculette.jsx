@@ -156,8 +156,14 @@ function Calculette() {
     <div className="flex flex-col justify-evenly items-center  gap-4  h-screen">
       <Navbar />
       <div className="flex justify-around gap-10 w-full">
+        <div className="flex justify-center">
+          <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
+        </div>
         <div className=" w-96 shadow-lg">
           <form className=" p-2" onSubmit={handleSubmit}>
+            <h4 className="font-medium text-xl uppercase tracking-widest text-center mb-2">
+              caractéristiques
+            </h4>
             <div className="flex flex-col ">
               <div className=" mb-6" data-te-input-wrapper-init>
                 <input
@@ -258,51 +264,45 @@ function Calculette() {
             </div>
           </form>
         </div>
-        <div className="flex justify-center">
-          <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg ">
-            <h5 className="mb-2 text-xl text-center font-medium leading-tight text-neutral-800 dark:black">
-              {`Note du téléphone `}
-            </h5>
-            <div className="text-center">
-              <h4 className="bg-yellow">{`${noteTel}`}</h4>
-              <h4 className="text-black text-transform: capitalize;">{`categorie: ${categorie}`}</h4>
-            </div>
-            <p className="mb-4 mt-4 text-base text-center text-neutral-600 dark:text-black">
-              Besoin d'un Qr Code ?
-            </p>
+        <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg ">
+          <h5 className="mb-2  text-center leading-tight text-neutral-800 dark:black font-medium text-xl uppercase tracking-widest">
+            {`Note du téléphone `}
+          </h5>
+          <div className="text-center">
+            <h4 className="text-red text-lg">{`${noteTel}`}</h4>
+            <h4 className="bg-purple text-white text-transform:  uppercase mt-2 rounded-md">{`categorie: ${categorie}`}</h4>
+          </div>
+          <p className="mb-4 mt-4 text-base text-center text-neutral-600 dark:text-black">
+            Besoin d'un Qr Code ?
+          </p>
+          <div>
             <div>
-              <div>
-                <form
-                  className="flex justify-center"
-                  onSubmit={handleFormSubmit}
+              <form className="flex justify-center" onSubmit={handleFormSubmit}>
+                <button
+                  type="submit"
+                  className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
                 >
-                  <button
-                    type="submit"
-                    className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
-                  >
-                    Générer le QR code
-                  </button>
-                </form>
+                  Générer le QR code
+                </button>
+              </form>
 
-                {showQrCode && (
-                  <div className="modal ">
-                    <canvas ref={canvasRef} />
-                    <div className="flex justify-center">
-                      <Button
-                        type="button"
-                        onClick={handleExportPdf}
-                        className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
-                      >
-                        Exporter en PDF
-                      </Button>
-                    </div>
+              {showQrCode && (
+                <div className="modal ">
+                  <canvas ref={canvasRef} />
+                  <div className="flex justify-center">
+                    <Button
+                      type="button"
+                      onClick={handleExportPdf}
+                      className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                    >
+                      Exporter en PDF
+                    </Button>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
   );
