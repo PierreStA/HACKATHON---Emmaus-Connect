@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import QRCode from "qrcode";
 import JsPDF from "jspdf";
 import Navbar from "../components/Navbar";
+import Button from "../components/Button";
 
 import Antutu from "../components/Antutu";
 
@@ -144,23 +145,27 @@ function Calculette() {
       setCategorie("5-Premium");
     }
   }, [noteTel]);
-  
+
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
   console.log(formData);
   // console.log(noteTel);
 
-  
-
   return (
-    <div className="flex flex-col  text-left h-screen">
+    <div className="flex flex-col justify-evenly items-center  gap-4  h-screen">
       <Navbar />
-      <div className="flex flex-row gap-10">
-        <div className="block w-6/12 rounded-lg bg-white p-6 shadow-lg  dark:bg-neutral-700 items-center justify-center">
-          <form onSubmit={handleSubmit}>
-            <div className="flex flex-col w-10/12">
-              <div className="relative mb-6" data-te-input-wrapper-init>
+      <div className="flex justify-around gap-10 w-full">
+        <div className="flex justify-center">
+          <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
+        </div>
+        <div className=" w-96 shadow-lg">
+          <form className=" p-2" onSubmit={handleSubmit}>
+            <h4 className="font-medium text-xl uppercase tracking-widest text-center mb-2">
+              caractéristiques
+            </h4>
+            <div className="flex flex-col ">
+              <div className=" mb-6" data-te-input-wrapper-init>
                 <input
                   type="text"
                   onChange={HandleMarque}
@@ -172,7 +177,7 @@ function Calculette() {
                   type="text"
                   value={modele}
                   onChange={HandleModele}
-                  placeholder="modele du telephone"
+                  placeholder="Modele du telephone"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -186,7 +191,7 @@ function Calculette() {
                 <input
                   type="number"
                   onChange={HandleStockage}
-                  placeholder="stockage"
+                  placeholder="Stockage"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -194,35 +199,35 @@ function Calculette() {
                   type="number"
                   value={indiceAntutu}
                   onChange={HandleindiceAntutu}
-                  placeholder="indice antutu"
+                  placeholder="Indice antutu"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="number"
                   onChange={HandleEcran}
-                  placeholder="taille de l'écran"
+                  placeholder="Taille de l'écran"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="number"
                   onChange={HandleReseau}
-                  placeholder="reseau max"
+                  placeholder="Reseau max"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="number"
                   onChange={HandleAndroid}
-                  placeholder="version android"
+                  placeholder="Version android"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
                 <input
                   type="text"
                   onChange={HandleChargeurcable}
-                  placeholder="chargeur"
+                  placeholder="Chargeur"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -237,7 +242,7 @@ function Calculette() {
                 <input
                   type="text"
                   onChange={HandleCodeModel}
-                  placeholder="code modele"
+                  placeholder="Code modele"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
@@ -247,51 +252,57 @@ function Calculette() {
                   placeholder="Ponderation"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
-
-                <button type="submit" className="btn-yellow ml-12">
-                  ok
-                </button>
+                <div className=" flex justify-center ">
+                  <button
+                    type="submit"
+                    className=" justify-center w-1/3 inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
+                  >
+                    ok
+                  </button>
+                </div>
               </div>
             </div>
           </form>
         </div>
-        <div className="flex justify-center">
-          <div className="block max-w-sm rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-700">
-            <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-              {`Note du téléphone `}
-            </h5>
-            <div className="text-center">
-              <h4 className="text-gray-50 text-transform: capitalize;">{`note: ${noteTel}`}</h4>
-              <h4 className="text-gray-50 text-transform: capitalize;">{`categorie: ${categorie}`}</h4>
-            </div>
-            <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
-              Besoin d'un Qr Code ?
-            </p>
+        <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg ">
+          <h5 className="mb-2  text-center leading-tight text-neutral-800 dark:black font-medium text-xl uppercase tracking-widest">
+            {`Note du téléphone `}
+          </h5>
+          <div className="text-center">
+            <h4 className="text-red text-lg">{`${noteTel}`}</h4>
+            <h4 className="bg-purple text-white text-transform:  uppercase mt-2 rounded-md">{`categorie: ${categorie}`}</h4>
+          </div>
+          <p className="mb-4 mt-4 text-base text-center text-neutral-600 dark:text-black">
+            Besoin d'un Qr Code ?
+          </p>
+          <div>
             <div>
-              <div>
-                <form onSubmit={handleFormSubmit}>
-                  <button
-                    type="submit"
-                    className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
-                  >
-                    Générer le QR code
-                  </button>
-                </form>
+              <form className="flex justify-center" onSubmit={handleFormSubmit}>
+                <button
+                  type="submit"
+                  className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
+                >
+                  Générer le QR code
+                </button>
+              </form>
 
-                {showQrCode && (
-                  <div className="modal">
-                    <canvas ref={canvasRef} />
-                    <button type="button" onClick={handleExportPdf}>
+              {showQrCode && (
+                <div className="modal ">
+                  <canvas ref={canvasRef} />
+                  <div className="flex justify-center">
+                    <Button
+                      type="button"
+                      onClick={handleExportPdf}
+                      className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                    >
                       Exporter en PDF
-                    </button>
+                    </Button>
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-        <div>{noteTel}</div>
-        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
   );
