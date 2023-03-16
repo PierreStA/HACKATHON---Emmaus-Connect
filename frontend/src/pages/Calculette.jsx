@@ -8,42 +8,28 @@ import Antutu from "../components/Antutu";
 function Calculette() {
   const antutuArray = [
     0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000,
-    500000, 550000, 600000, 650000, 700000,
+    500000, 550000, 600000, 650000, 700000,750000,800000,
   ];
   const valAArray = [
-    40, 44, 49, 54, 59, 64, 69, 74, 79, 84, 89, 94, 99, 104, 109,
+    40, 44, 49, 54, 59, 64, 69, 74, 79, 84, 89, 94, 99, 104, 109,114,119,
   ];
   // const [antmin, setAntmin] = useState(0);
   const [marque, setMarque] = useState("");
   const [modele, setModele] = useState("");
-<<<<<<< HEAD
-  const [ram, setRam] = useState();
-  const [stockage, setStockage] = useState();
-  const [indiceAntutu, setIndiceAntutu] = useState();
-  const [ecran, setEcran] = useState();
-  const [reseau, setReseau] = useState();
-  const [android, setAndroid] = useState();
-=======
   const [ram, setRam] = useState(null);
   const [stockage, setStockage] = useState(null);
   const [indiceAntutu, setIndiceAntutu] = useState(null);
   const [ecran, setEcran] = useState(null);
   const [reseau, setReseau] = useState(null);
   const [android, setAndroid] = useState(null);
->>>>>>> dev
   const [chargeurcable, setChargeurcable] = useState("");
   const [idetat, setIdetat] = useState("");
   const [codeModel, setcodeModel] = useState("");
   const [valA, setValA] = useState(0);
   const [valM, setValM] = useState(0);
   const [valS, setValS] = useState(0);
-<<<<<<< HEAD
-  const [noteTel, setNoteTel] = useState(0);
-  const [ponderation, setPonderation] = useState();
-=======
   const [noteTel, setNoteTel] = useState(null);
   const [ponderation, setPonderation] = useState(null);
->>>>>>> dev
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -150,152 +136,6 @@ function Calculette() {
   // console.log(noteTel);
 
   return (
-<<<<<<< HEAD
-    <div className="text-left">
-      <form onSubmit={handleSubmit} className="w-full max-w-lg">
-        <div className="flex flex-wrap -mx-3 mb-6">
-          <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-first-name"
-            >
-              <input
-                type="text"
-                value={marque}
-                onChange={HandleMarque}
-                placeholder="Marque du telephone"
-                alt="marque du telephone"
-              />
-            </label>
-            <label
-              className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-first-name5"
-            >
-              <input
-                type="text"
-                value={modele}
-                onChange={HandleModele}
-                placeholder="modele du telephone"
-                alt="modele du telephone"
-              />
-            </label>
-          </div>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={ram}
-              onChange={HandleRam}
-              placeholder="RAM du telephone"
-              alt="RAM du telephone"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={stockage}
-              onChange={HandleStockage}
-              placeholder="stockage"
-              alt="stockage du telephone"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={indiceAntutu}
-              onChange={HandleindiceAntutu}
-              placeholder="indice antutu"
-              alt="score antutu"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={ecran}
-              onChange={HandleEcran}
-              placeholder="taille de l'écran"
-              alt="taille de l'ecran"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={reseau}
-              onChange={HandleReseau}
-              placeholder="reseau max"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={android}
-              onChange={HandleAndroid}
-              placeholder="version android"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="text"
-              value={chargeurcable}
-              onChange={HandleChargeurcable}
-              placeholder="chargeur"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="text"
-              value={idetat}
-              onChange={HandleIdEtat}
-              placeholder="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-              htmlFor="grid-first-name5"
-            />
-          </label>
-          <label className="m-5">
-            <input
-              type="text"
-              value={codeModel}
-              onChange={HandleCodeModel}
-              placeholder="code modele"
-            />
-          </label>
-          <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-            htmlFor="grid-first-name5"
-          >
-            <input
-              type="number"
-              value={ponderation}
-              onChange={HandlePonderation}
-              placeholder="Ponderation"
-            />
-          </label>
-          <button type="submit" alt="soumettre le formulaire">
-            ok
-          </button>
-=======
     <div className="flex flex-col  text-left h-screen">
       <Navbar />
       <div className="flex flex-row gap-10">
@@ -394,7 +234,6 @@ function Calculette() {
               </div>
             </div>
           </form>
->>>>>>> dev
         </div>
         <div className="flex justify-center">
           <div className="block max-w-sm rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-700">
