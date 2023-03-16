@@ -1,8 +1,10 @@
+import Navbar from "@components/Navbar";
 import AbbePierreCitation from "../components/AbbePierreCitation";
 
 export default function Home() {
   return (
     <div>
+      <Navbar />
       <header>
         <AbbePierreCitation />
         <button type="button" className="btn-darkgreen">
