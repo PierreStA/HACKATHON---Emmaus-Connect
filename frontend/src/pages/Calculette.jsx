@@ -8,10 +8,10 @@ import Antutu from "../components/Antutu";
 function Calculette() {
   const antutuArray = [
     0, 50000, 100000, 150000, 200000, 250000, 300000, 350000, 400000, 450000,
-    500000, 550000, 600000, 650000, 700000,
+    500000, 550000, 600000, 650000, 700000, 750000, 800000,
   ];
   const valAArray = [
-    40, 44, 49, 54, 59, 64, 69, 74, 79, 84, 89, 94, 99, 104, 109,
+    40, 44, 49, 54, 59, 64, 69, 74, 79, 84, 89, 94, 99, 104, 109, 114, 119,
   ];
   // const [antmin, setAntmin] = useState(0);
   const [marque, setMarque] = useState("");
@@ -29,12 +29,14 @@ function Calculette() {
   const [valM, setValM] = useState(0);
   const [valS, setValS] = useState(0);
   const [noteTel, setNoteTel] = useState(null);
-  const [ponderation, setPonderation] = useState(null);
+  const [ponderation, setPonderation] = useState();
+  const [categorie, setCategorie] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setNoteTel(valA + valM + valS + ((valA + valM + valS) / 100) * ponderation);
   };
+
   const HandleMarque = (e) => {
     setMarque(e.target.value);
   };
@@ -43,7 +45,7 @@ function Calculette() {
   };
   const HandleRam = (e) => {
     setRam(parseInt(e.target.value, 10));
-    setValM(e.target.value * 10);
+    setValM(e.target.value * 2);
   };
   const HandleStockage = (e) => {
     setStockage(parseInt(e.target.value, 10));
@@ -129,11 +131,27 @@ function Calculette() {
     }
   }, [showQrCode, formData]);
 
+  useEffect(() => {
+    if (noteTel <= 90) {
+      setCategorie("1-HC");
+    } else if (noteTel <= 165) {
+      setCategorie("2-C");
+    } else if (noteTel <= 255) {
+      setCategorie("3-B");
+    } else if (noteTel <= 375) {
+      setCategorie("4-A");
+    } else {
+      setCategorie("5-Premium");
+    }
+  }, [noteTel]);
+  
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
   console.log(formData);
   // console.log(noteTel);
+
+  
 
   return (
     <div className="flex flex-col  text-left h-screen">
@@ -243,7 +261,8 @@ function Calculette() {
               {`Note du téléphone `}
             </h5>
             <div className="text-center">
-              <h4 className="">{`${noteTel}`}</h4>
+              <h4 className="text-gray-50 text-transform: capitalize;">{`note: ${noteTel}`}</h4>
+              <h4 className="text-gray-50 text-transform: capitalize;">{`categorie: ${categorie}`}</h4>
             </div>
             <p className="mb-4 text-base text-neutral-600 dark:text-neutral-200">
               Besoin d'un Qr Code ?
@@ -272,7 +291,7 @@ function Calculette() {
           </div>
         </div>
         <div>{noteTel}</div>
-        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu}/>
+        <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
       </div>
     </div>
   );
