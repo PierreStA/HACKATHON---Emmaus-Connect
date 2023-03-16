@@ -33,7 +33,7 @@ function Import() {
 
   return (
     <div className="relative">
-      <div className="fixed w-screen">
+      <div className="fixed w-screen z-10">
         <Navbar />
       </div>
       <div className="fixed w-screen flex flex-row justify-center align-middle items-center pt-64">

@@ -24,6 +24,10 @@ module.exports = {
         6: "0.6",
         7: "0.7",
       },
+      placeholder: {
+        placeholderDarkgreen: "#05ACB0",
+        placeholderPurple: "#05ACB0",
+      },
     },
   },
   plugins: [],
