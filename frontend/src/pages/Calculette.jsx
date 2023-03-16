@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import QRCode from "qrcode";
+import JsPDF from "jspdf";
 import Navbar from "../components/Navbar";
-import Qr from "../components/Qr";
+
 import Antutu from "../components/Antutu";
 
 function Calculette() {
@@ -14,19 +16,19 @@ function Calculette() {
   // const [antmin, setAntmin] = useState(0);
   const [marque, setMarque] = useState("");
   const [modele, setModele] = useState("");
-  const [ram, setRam] = useState(0);
-  const [stockage, setStockage] = useState("");
-  const [indiceAntutu, setIndiceAntutu] = useState();
-  const [ecran, setEcran] = useState("");
-  const [reseau, setReseau] = useState("");
-  const [android, setAndroid] = useState("");
+  const [ram, setRam] = useState(null);
+  const [stockage, setStockage] = useState(null);
+  const [indiceAntutu, setIndiceAntutu] = useState(null);
+  const [ecran, setEcran] = useState(null);
+  const [reseau, setReseau] = useState(null);
+  const [android, setAndroid] = useState(null);
   const [chargeurcable, setChargeurcable] = useState("");
   const [idetat, setIdetat] = useState("");
   const [codeModel, setcodeModel] = useState("");
   const [valA, setValA] = useState(0);
   const [valM, setValM] = useState(0);
   const [valS, setValS] = useState(0);
-  const [noteTel, setNoteTel] = useState(0);
+  const [noteTel, setNoteTel] = useState(null);
   const [ponderation, setPonderation] = useState(null);
 
   const handleSubmit = (e) => {
@@ -35,7 +37,6 @@ function Calculette() {
   };
   const HandleMarque = (e) => {
     setMarque(e.target.value);
-    localStorage.setItem({ marque });
   };
   const HandleModele = (e) => {
     setModele(e.target.value);
@@ -88,6 +89,50 @@ function Calculette() {
   const HandlePonderation = (e) => {
     setPonderation(e.target.value);
   };
+
+  const formData = {
+    mark: marque,
+    model: modele,
+    memoire: ram,
+    stock: stockage,
+    ant: indiceAntutu,
+    screen: ecran,
+    network: reseau,
+    version: android,
+    connexion: chargeurcable,
+    stateId: idetat,
+    code: codeModel,
+  };
+
+  const [showQrCode, setShowQrCode] = useState(false);
+  const canvasRef = useRef();
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    setShowQrCode(true);
+  };
+  const handleExportPdf = () => {
+    if (showQrCode) {
+      const pdf = new JsPDF();
+      pdf.addImage(canvasRef.current.toDataURL(), "PNG", 10, 10, 100, 100);
+      pdf.save("qr-code.pdf");
+    }
+  };
+
+  useEffect(() => {
+    if (showQrCode) {
+      QRCode.toCanvas(
+        canvasRef.current,
+        JSON.stringify(formData),
+        (error) => error && console.error(error)
+      );
+    }
+  }, [showQrCode, formData]);
+
+  // const handleInputChange = (e) => {
+  //   setFormData({ ...formData, [e.target.name]: e.target.value });
+  // };
+  console.log(formData);
   // console.log(noteTel);
 
   return (
@@ -100,7 +145,6 @@ function Calculette() {
               <div className="relative mb-6" data-te-input-wrapper-init>
                 <input
                   type="text"
-                  value={marque}
                   onChange={HandleMarque}
                   placeholder="Marque du telephone"
                   className="mb-3  placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -108,7 +152,6 @@ function Calculette() {
 
                 <input
                   type="text"
-                  value={modele}
                   onChange={HandleModele}
                   placeholder="modele du telephone"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -116,7 +159,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={ram}
                   onChange={HandleRam}
                   placeholder="RAM du telephone"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -124,7 +166,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={stockage}
                   onChange={HandleStockage}
                   placeholder="stockage"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -132,7 +173,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={indiceAntutu}
                   onChange={HandleindiceAntutu}
                   placeholder="indice antutu"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -140,7 +180,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={ecran}
                   onChange={HandleEcran}
                   placeholder="taille de l'écran"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -148,7 +187,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={reseau}
                   onChange={HandleReseau}
                   placeholder="reseau max"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -156,7 +194,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={android}
                   onChange={HandleAndroid}
                   placeholder="version android"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -164,7 +201,6 @@ function Calculette() {
 
                 <input
                   type="text"
-                  value={chargeurcable}
                   onChange={HandleChargeurcable}
                   placeholder="chargeur"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -172,7 +208,6 @@ function Calculette() {
 
                 <input
                   type="text"
-                  value={idetat}
                   onChange={HandleIdEtat}
                   placeholder="Etat du telephone "
                   htmlFor="grid-first-name5"
@@ -181,7 +216,6 @@ function Calculette() {
 
                 <input
                   type="text"
-                  value={codeModel}
                   onChange={HandleCodeModel}
                   placeholder="code modele"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -189,7 +223,6 @@ function Calculette() {
 
                 <input
                   type="number"
-                  value={ponderation}
                   onChange={HandlePonderation}
                   placeholder="Ponderation"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -214,25 +247,31 @@ function Calculette() {
               Besoin d'un Qr Code ?
             </p>
             <div>
-              <Qr
-                marque={marque}
-                modele={modele}
-                ram={ram}
-                stockage={stockage}
-                indiceAntutu={indiceAntutu}
-                ecran={ecran}
-                reseau={reseau}
-                android={android}
-                chargeurcable={chargeurcable}
-                idetat={idetat}
-                codeModel={codeModel}
-              />
+              <div>
+                <form onSubmit={handleFormSubmit}>
+                  <button
+                    type="submit"
+                    className="inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-red transition ease-in-out duration-150"
+                  >
+                    Générer le QR code
+                  </button>
+                </form>
+
+                {showQrCode && (
+                  <div className="modal">
+                    <canvas ref={canvasRef} />
+                    <button type="button" onClick={handleExportPdf}>
+                      Exporter en PDF
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </form>
-      <div>{noteTel}</div>
-      <Antutu />
+        <div>{noteTel}</div>
+        <Antutu />
+      </div>
     </div>
   );
 }
