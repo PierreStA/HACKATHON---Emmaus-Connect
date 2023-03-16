@@ -51,7 +51,7 @@ function Antutu() {
 
   return (
     <div className="flex flex-col m-4 p-4 justify-center items-center gap-4">
-      <label htmlFor="model">Phone model</label>
+      <label htmlFor="model" className="font-medium text-xl uppercase tracking-widest">Phone model</label>
       <input
         className="border-2 w-96"
         name="model"
@@ -60,12 +60,20 @@ function Antutu() {
         onKeyDown={handleKeyPress}
       />
       <Button onClick={handleFilter}>Trouver le score Antutu</Button>
-      <div className="phoneCards">
+      <div className="phoneCards grid grid-cols-2 gap-2">
         {filteredPhones &&
           filteredPhones.map((phone) => (
-            <div key={phone.id} className="flex gap-2">
-              <p>Modèle : {phone.model}</p>
-              <p>Score Antutu : {phone.antutu_score}</p>
+            <div
+              key={phone.id}
+              className="flex flex-col gap-2 rounded-lg shadow-md p-4"
+            >
+              <p>
+                <span className="text-red">Modèle : </span> {phone.model}
+              </p>
+              <p>
+                <span className="text-red">Score Antutu : </span>
+                {phone.antutu_score}
+              </p>
             </div>
           ))}
       </div>
