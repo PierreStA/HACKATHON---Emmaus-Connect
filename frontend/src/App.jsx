@@ -4,7 +4,7 @@ import Calculette from "./pages/Calculette";
 
 function App() {
   return (
-    <div className="App">
+    <div className="h-full">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/calculette" element={<Calculette />} />
