@@ -86,7 +86,7 @@ function Antutu({ setModele, setIndiceAntutu }) {
               onClick={addResultToCalc}
               type="button"
             >
-              <div className="absolute w-full h-full "></div>
+              <div className="absolute w-full h-full " />
               <div
                 key={phone.id}
                 className="flex flex-col gap-2 rounded-lg shadow-md p-4"
