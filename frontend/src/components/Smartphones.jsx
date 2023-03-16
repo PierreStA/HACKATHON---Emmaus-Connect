@@ -50,7 +50,10 @@ function Smartphones({
         </p>
         <p>{etat}</p>
       </div>
-      <img src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`} alt="S23" />
+      <img
+        src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
+        alt="S23"
+      />
     </div>
   );
 }
