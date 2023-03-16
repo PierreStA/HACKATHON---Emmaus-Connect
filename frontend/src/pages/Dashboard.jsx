@@ -11,7 +11,7 @@ function Dashboard() {
       setSmartphones(res.data);
     });
   }, []);
-  console.log(smartphones);
+
   return (
     <div>
       <Navbar />

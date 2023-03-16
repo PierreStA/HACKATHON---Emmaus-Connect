@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Qr from "../components/Qr";
+import Antutu from "../components/Antutu";
 
 function Calculette() {
   const antutuArray = [
@@ -229,7 +230,9 @@ function Calculette() {
             </div>
           </div>
         </div>
-      </div>
+      </form>
+      <div>{noteTel}</div>
+      <Antutu />
     </div>
   );
 }
