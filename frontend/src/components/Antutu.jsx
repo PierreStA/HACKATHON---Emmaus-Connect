@@ -63,7 +63,7 @@ function Antutu() {
       <div className="phoneCards">
         {filteredPhones &&
           filteredPhones.map((phone) => (
-            <div key={phone.id}>
+            <div key={phone.id} className="flex gap-2">
               <p>Modèle : {phone.model}</p>
               <p>Score Antutu : {phone.antutu_score}</p>
             </div>
