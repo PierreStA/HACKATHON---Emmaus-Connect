@@ -58,7 +58,7 @@ function Smartphones({
       </div>
       <img
         src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
-        alt="apperçu du téléphone"
+        alt="aperçu du téléphone"
       />
     </div>
   );
