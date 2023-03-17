@@ -1,10 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import QRCode from "qrcode";
 import JsPDF from "jspdf";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 
 import Antutu from "../components/Antutu";
+
+const backEndUrl = import.meta.env.VITE_BACKEND_URL;
 
 function Calculette() {
   const antutuArray = [
@@ -15,16 +18,16 @@ function Calculette() {
     40, 44, 49, 54, 59, 64, 69, 74, 79, 84, 89, 94, 99, 104, 109, 114, 119,
   ];
   // const [antmin, setAntmin] = useState(0);
-  const [marque, setMarque] = useState("");
-  const [modele, setModele] = useState("");
-  const [ram, setRam] = useState(null);
-  const [stockage, setStockage] = useState(null);
+  const [marqueTel, setMarqueTel] = useState("");
+  const [model, setModel] = useState("");
+  const [memoire, setMemoire] = useState(null);
+  const [stock, setStock] = useState(null);
   const [indiceAntutu, setIndiceAntutu] = useState(null);
-  const [ecran, setEcran] = useState(null);
-  const [reseau, setReseau] = useState(null);
-  const [android, setAndroid] = useState(null);
-  const [chargeurcable, setChargeurcable] = useState("");
-  const [idetat, setIdetat] = useState("");
+  const [screen, setScreen] = useState(null);
+  const [network, setNetwork] = useState(null);
+  const [androidVersion, setAndroidVersion] = useState(null);
+  const [chargeur, setChargeur] = useState("");
+  const [etat, setEtat] = useState("");
   const [codeModel, setcodeModel] = useState("");
   const [valA, setValA] = useState(0);
   const [valM, setValM] = useState(0);
@@ -39,17 +42,17 @@ function Calculette() {
   };
 
   const HandleMarque = (e) => {
-    setMarque(e.target.value);
+    setMarqueTel(e.target.value);
   };
   const HandleModele = (e) => {
-    setModele(e.target.value);
+    setModel(e.target.value);
   };
   const HandleRam = (e) => {
-    setRam(parseInt(e.target.value, 10));
+    setMemoire(parseInt(e.target.value, 10));
     setValM(e.target.value * 2);
   };
   const HandleStockage = (e) => {
-    setStockage(parseInt(e.target.value, 10));
+    setStock(parseInt(e.target.value, 10));
     setValS(e.target.value * 2);
   };
   const HandleindiceAntutu = (e) => {
@@ -68,22 +71,22 @@ function Calculette() {
   };
 
   const HandleEcran = (e) => {
-    setEcran(e.target.value);
+    setScreen(e.target.value);
   };
   const HandleReseau = (e) => {
-    setReseau(e.target.value);
+    setNetwork(e.target.value);
   };
 
   const HandleAndroid = (e) => {
-    setAndroid(e.target.value);
+    setAndroidVersion(e.target.value);
   };
 
   const HandleChargeurcable = (e) => {
-    setChargeurcable(e.target.value);
+    setChargeur(e.target.value);
   };
 
   const HandleIdEtat = (e) => {
-    setIdetat(e.target.value);
+    setEtat(e.target.value);
   };
 
   const HandleCodeModel = (e) => {
@@ -94,16 +97,16 @@ function Calculette() {
   };
 
   const formData = {
-    mark: marque,
-    model: modele,
-    memoire: ram,
-    stock: stockage,
-    ant: indiceAntutu,
-    screen: ecran,
-    network: reseau,
-    version: android,
-    connexion: chargeurcable,
-    stateId: idetat,
+    marque: marqueTel,
+    modele: model,
+    ram: memoire,
+    stockage: stock,
+    indice_antutu: indiceAntutu,
+    ecran: screen,
+    reseau: network,
+    android: androidVersion,
+    chargeurcable: chargeur,
+    idetat: etat,
     code: codeModel,
   };
 
@@ -133,7 +136,13 @@ function Calculette() {
   }, [showQrCode, formData]);
 
   useEffect(() => {
-    if (android < 8 || ram < 2 || stockage < 16 || ecran < 4 || reseau < 4) {
+    if (
+      androidVersion < 8 ||
+      memoire < 2 ||
+      stock < 16 ||
+      screen < 4 ||
+      network < 4
+    ) {
       setCategorie("HC");
     }
 
@@ -150,10 +159,21 @@ function Calculette() {
     }
   }, [noteTel]);
 
+  const addSmartphone = () => {
+    const formToBack = { ...formData, image_source: "" };
+    console.log(formData);
+    console.log(formToBack);
+    axios
+      .post(`${backEndUrl}/smartphones`, formToBack)
+      .then((res) => {
+        console.warn(res);
+      })
+      .catch((error) => console.error(error));
+  };
+
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
-  console.log(formData);
   // console.log(noteTel);
 
   return (
@@ -161,7 +181,7 @@ function Calculette() {
       <Navbar />
       <div className="flex justify-around gap-10 w-full">
         <div className="flex justify-center">
-          <Antutu setModele={setModele} setIndiceAntutu={setIndiceAntutu} />
+          <Antutu setModele={setModel} setIndiceAntutu={setIndiceAntutu} />
         </div>
         <div className=" w-96 shadow-lg ">
           <form className="p-2 hover:drop-shadow-lg" onSubmit={handleSubmit}>
@@ -179,7 +199,7 @@ function Calculette() {
 
                 <input
                   type="text"
-                  value={modele}
+                  value={model}
                   onChange={HandleModele}
                   placeholder="Modele du telephone"
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
@@ -262,6 +282,13 @@ function Calculette() {
                     className=" justify-center w-1/3 inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
                   >
                     ok
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={addSmartphone}
+                    className="ml-8 justify-center w-1/3 inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
+                  >
+                    Enregistrer
                   </button>
                 </div>
               </div>
