@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import QRCode from "qrcode";
 import JsPDF from "jspdf";
+import axios from "axios";
 import Navbar from "../components/Navbar";
 import Button from "../components/Button";
 
@@ -107,6 +108,8 @@ function Calculette() {
     code: codeModel,
   };
 
+  const formToBack = { ...formData, image_source: "" };
+
   const [showQrCode, setShowQrCode] = useState(false);
   const canvasRef = useRef();
 
@@ -145,6 +148,15 @@ function Calculette() {
       setCategorie("5-Premium");
     }
   }, [noteTel]);
+
+  const addSmartphone = () => {
+    axios
+      .post(`${import.meta.env.VITE_BACKEND_URL}/smartphones`, formToBack)
+      .then((res) => {
+        console.warn(res);
+      })
+      .catch((error) => console.error(error));
+  };
 
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -258,6 +270,13 @@ function Calculette() {
                     className=" justify-center w-1/3 inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
                   >
                     ok
+                  </button>
+                  <button
+                    type="submit"
+                    onClick={addSmartphone}
+                    className="ml-8 justify-center w-1/3 inline-flex items-center px-4 py-2 bg-darkgreen border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-purple transition ease-in-out duration-150"
+                  >
+                    Enregistrer
                   </button>
                 </div>
               </div>
