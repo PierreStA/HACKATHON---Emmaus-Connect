@@ -1,15 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo_image.png";
+import Citation from "./AbbePierreCitation";
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   return (
-    <div className="flex flex-wrap py-2">
+    <div className="flex flex-wrap py-2 w-full">
       <div className="w-full px-4">
         <nav className="relative flex flex-wrap items-center justify-between px-2 py-3  rounded">
-          <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
-            <div className="w-full relative flex justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
+          <div className="container px-1 mx-auto flex flex-wrap items-center justify-between">
+            <div className="w-full relative flex flex-row  justify-between lg:w-auto px-4 lg:static lg:block lg:justify-start">
               <div
                 className="inline-block mr-4 py-2 whitespace-nowrap uppercase "
                 href="#pablo"
@@ -22,7 +23,6 @@ export default function Menu() {
                   />
                 </NavLink>
               </div>
-
               <button
                 className="text-black cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
                 type="button"

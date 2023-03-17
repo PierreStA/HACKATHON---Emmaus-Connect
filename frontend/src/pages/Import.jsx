@@ -32,7 +32,7 @@ function Import() {
   };
 
   return (
-    <div className="relative">
+    <div className="relative ">
       <div className="fixed w-screen z-10">
         <Navbar />
       </div>
@@ -60,7 +60,7 @@ function Import() {
           </p>
         )}
       </div>
-      <div className="absolute mt-[325px]">
+      <div className="absolute mt-[325px] ">
         <table className="mt-12">
           <thead className="m-4 bg-darkgreen">
             <tr>
