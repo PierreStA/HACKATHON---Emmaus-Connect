@@ -133,16 +133,20 @@ function Calculette() {
   }, [showQrCode, formData]);
 
   useEffect(() => {
+    if (android < 8 || ram < 2 || stockage < 16 || ecran < 4 || reseau < 4) {
+      setCategorie("HC");
+    }
+
     if (noteTel <= 90) {
-      setCategorie("1-HC");
+      setCategorie("HC");
     } else if (noteTel <= 165) {
-      setCategorie("2-C");
+      setCategorie("C");
     } else if (noteTel <= 255) {
-      setCategorie("3-B");
+      setCategorie("B");
     } else if (noteTel <= 375) {
-      setCategorie("4-A");
+      setCategorie("A");
     } else {
-      setCategorie("5-Premium");
+      setCategorie("Premium");
     }
   }, [noteTel]);
 

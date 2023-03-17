@@ -1,27 +1,37 @@
 import { Link } from "react-router-dom";
 import AbbePierreCitation from "../components/AbbePierreCitation";
-import Logo from "../assets/Logo_complet.png";
+import Logo from "../assets/logo_complet.png";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-r from-indigo-900 via-blue-500 to-blue-300 h-full">
-      <div className="flex flex-col items-center justify-center">
-        <img src={Logo} alt="logo" className="h-[250px] w-[300px] mt-5" />
-        <AbbePierreCitation />
-        <div className="flex flex-row">
-          <div className="h-[240px] w-[500px] flex items-center justify-evenly">
-            <input
-              type="text"
-              name="email"
-              placeholder="E-mail"
-              className="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
-            <input
-              type="password"
-              name="password"
-              placeholder="Mot de passe"
-              className="  bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            />
+    <div
+      className="bg-cover bg-center h-screen"
+      style={{ backgroundImage: "url('./src/assets/agussss_(50).jpg')" }}
+    >
+      {" "}
+      <img
+        src={Logo}
+        alt="logo"
+        className="  object-left-top bg-blue-600 bg-opacity-10 rounded-2xl "
+      />
+      <AbbePierreCitation />
+      <div className="flex flex-col items-center justify-center ">
+        <div className="flex flex-col ">
+          <div className="h-[240px] w-[500px] flex items-center justify-evenly gap-4 ">
+            <form className="gap-4 bject-left-top">
+              <input
+                type="text"
+                name="email"
+                placeholder="E-mail"
+                className=" w-[40%] bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-200 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+              <input
+                type="password"
+                name="password"
+                placeholder="Mot de passe"
+                className=" w-[40%] bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-200 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              />
+            </form>
           </div>
         </div>
       </div>
