@@ -177,14 +177,14 @@ function Calculette() {
   // console.log(noteTel);
 
   return (
-    <div className="flex flex-col justify-evenly items-center  gap-4  h-screen">
+    <div className="flex flex-col justify-evenly items-center  gap-4  h-screen bg-slate-100">
       <Navbar />
-      <div className="flex justify-around gap-10 w-full">
+      <div className="flex justify-around gap-10 w-full ">
         <div className="flex justify-center">
           <Antutu setModele={setModel} setIndiceAntutu={setIndiceAntutu} />
         </div>
-        <div className=" w-96 shadow-lg ">
-          <form className="p-2 hover:drop-shadow-lg" onSubmit={handleSubmit}>
+        <div className=" w-96 shadow-lg bg-white ">
+          <form className="p-2 hover:drop-shadow-lg " onSubmit={handleSubmit}>
             <h4 className="font-medium text-xl uppercase tracking-widest text-center mb-2">
               caractéristiques
             </h4>
@@ -295,7 +295,7 @@ function Calculette() {
             </div>
           </form>
         </div>
-        <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg hover:drop-shadow-2xl">
+        <div className="block justify-center w-72 h-fit rounded-lg  p-6 shadow-lg hover:drop-shadow-2xl bg-white">
           <h5 className="mb-2  text-center leading-tight text-neutral-800 dark:black font-medium text-xl uppercase tracking-widest">
             {`Note du téléphone `}
           </h5>
@@ -318,7 +318,7 @@ function Calculette() {
               </form>
 
               {showQrCode && (
-                <div className="modal ">
+                <div className="modal  ">
                   <canvas ref={canvasRef} />
                   <div className="flex justify-center">
                     <Button
