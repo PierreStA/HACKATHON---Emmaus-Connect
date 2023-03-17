@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo_image.png";
+import Citation from "./AbbePierreCitation";
 
 export default function Menu() {
   const [menuOpen, setMenuOpen] = React.useState(false);

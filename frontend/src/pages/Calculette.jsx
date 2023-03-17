@@ -132,26 +132,28 @@ function Calculette() {
   }, [showQrCode, formData]);
 
   useEffect(() => {
+    if (android < 8 || ram < 2 || stockage < 16 || ecran < 4 || reseau < 4) {
+      setCategorie("HC");
+    }
+
     if (noteTel <= 90) {
-      setCategorie("1-HC");
+      setCategorie("HC");
     } else if (noteTel <= 165) {
-      setCategorie("2-C");
+      setCategorie("C");
     } else if (noteTel <= 255) {
-      setCategorie("3-B");
+      setCategorie("B");
     } else if (noteTel <= 375) {
-      setCategorie("4-A");
+      setCategorie("A");
     } else {
-      setCategorie("5-Premium");
+      setCategorie("Premium");
     }
   }, [noteTel]);
-  
+
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
   console.log(formData);
   // console.log(noteTel);
-
-  
 
   return (
     <div className="flex flex-col  text-left h-screen">
@@ -248,7 +250,7 @@ function Calculette() {
                   className="mb-3 placeholder:italic placeholder:text-slate-400 block bg-white w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm"
                 />
 
-                <button type="submit" className="btn-yellow ml-12">
+                <button type="submit" className="btn-yellow ml-12 ">
                   ok
                 </button>
               </div>
