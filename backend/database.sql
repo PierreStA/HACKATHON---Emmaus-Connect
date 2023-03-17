@@ -20,7 +20,7 @@ USE `emausconnect` ;
 -- -----------------------------------------------------
 -- Table `emausconnect`.`etat`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `emausconnect`.`etat`
+DROP TABLE IF EXISTS `emausconnect`.`etat`;
 
 CREATE TABLE IF NOT EXISTS `emausconnect`.`etat` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -34,7 +34,7 @@ INSERT INTO `emausconnect`.`etat` (`id`, `etat`) VALUES ('1', 'DEEE'), ('2', 'RÃ
 -- -----------------------------------------------------
 -- Table `emausconnect`.`smartphone`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `emausconnect`.`smartphone`
+DROP TABLE IF EXISTS `emausconnect`.`smartphone`;
 
 CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `id` INT NOT NULL AUTO_INCREMENT,
@@ -67,7 +67,7 @@ INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stock
 -- -----------------------------------------------------
 -- Table `emausconnect`.`user`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `emausconnect`.`user`
+DROP TABLE IF EXISTS `emausconnect`.`user`;
 
 CREATE TABLE IF NOT EXISTS `emausconnect`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
