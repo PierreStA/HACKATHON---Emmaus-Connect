@@ -64,7 +64,7 @@ function Antutu({ setModele, setIndiceAntutu }) {
       rounded-lg
       shadow-lg
       h-fit
-      hover:drop-shadow-xl"
+      hover:drop-shadow-xl bg-white"
     >
       <label
         htmlFor="model"

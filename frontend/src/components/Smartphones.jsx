@@ -14,7 +14,7 @@ function Smartphones({
   categorie,
 }) {
   return (
-    <div className="grid grid-cols-2 w-full rounded-lg shadow-md p-4">
+    <div className="grid grid-cols-2 w-full rounded-lg shadow-md p-4 bg-white">
       <div>
         <p>
           <span className="font-medium text-darkgreen"> Marque : </span>
@@ -25,7 +25,9 @@ function Smartphones({
           {modele}
         </p>
         <p>
-          <span className="font-medium text-darkgreen">Capacité de stockage : </span>
+          <span className="font-medium text-darkgreen">
+            Capacité de stockage :{" "}
+          </span>
           {stockage}Go
         </p>
         <p>
@@ -49,11 +51,14 @@ function Smartphones({
           {antutu}
         </p>
         <p className="text-red">{etat}</p>
-        <p><span className="font-medium text-darkgreen">Catégorie : </span>{categorie}</p>
+        <p>
+          <span className="font-medium text-darkgreen">Catégorie : </span>
+          {categorie}
+        </p>
       </div>
       <img
         src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${image}`}
-        alt="apperçu du téléphone"
+        alt="aperçu du téléphone"
       />
     </div>
   );
