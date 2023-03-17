@@ -9,7 +9,6 @@ function Import() {
     const [link, setLink] = useState("");
     const [phones, setPhones] = useState([]);
     const [headers, setHeaders] = useState([]);
-    const [allColumns, setAllColumns] = useState(false);
     const [allRows, setAllRows] = useState(false);
 
     useEffect(() => {
@@ -28,18 +27,14 @@ function Import() {
         const json = data.map((line) => {
             let obj = {};
             data[0].forEach((el, j) => (obj = { ...obj, [el]: line[j] }));
-            return obj;
+            return {...obj, statut: false };
         });
         const titleObject = json.splice(0, 1);
         const titleArray = Object.keys(titleObject[0]).map((elem) => ({text: elem, status: false}));
         setPhones(json);
         setHeaders(titleArray);
-    };
-
-    const toLocal = () => {
         localStorage.setItem('phones', JSON.stringify(phones));
         localStorage.setItem('headers', JSON.stringify(headers));
-        console.log(phones);
     };
 
     const handleImport = () => {
@@ -47,21 +42,47 @@ function Import() {
             .then((result) => result.text())
             .then((text) => papa.parse(text))
             .then((sheet) => prepareJsonData(sheet.data))
-            .then(() => toLocal());
     };
 
-    const handleCheck = (e) => {
-        const index = e.target.parentElement.parentElement.childNodes[1].childNodes[0].textContent;
-        const obj = phones[index - 1];
-        console.log(obj);
-    };
+    // const handleCheck = (e) => {
+    //     const index = e.target.parentElement.parentElement.childNodes[1].childNodes[0].textContent;
+    //     const obj = phones[index - 1];
+    //     console.log(obj);
+    // };
+
+    const handleColumnCheck = (e) => {
+        const titleChecked = e.target.parentElement.childNodes[0].textContent;
+        setHeaders(prevHeaders => prevHeaders.map(header => {
+          if (header.text === titleChecked) {
+            return {...header, status: !header.status};
+          }
+          return header;
+        }));
+    }      
 
     const handleAllColumns = () => {
-        setAllColumns(!allColumns);
+        setHeaders(prevHeaders => prevHeaders.map(header => {
+            return {...header, status: !header.status};
+          }
+        ));
+    };
+
+    const handleRowCheck = (e) => {
+        // console.log(e.target.parentElement.parentElement.childNodes[1].childNodes[0].textContent);
+        const rowChecked = e.target.parentElement.parentElement.childNodes[1].childNodes[0].textContent;
+        setPhones(prevPhones => prevPhones.map(phone => {
+          if (phone.id === rowChecked) {
+            return {...phone, statut: !phone.statut};
+          }
+          return phone;
+        }));
     };
 
     const handleAllRows = () => {
-        setAllRows(!allRows);
+        setPhones(prevPhones => prevPhones.map(phone => {
+            return {...phone, statut: !phone.statut};
+          }
+        ));
     };
 
     const handlePersist = () => {
@@ -170,6 +191,7 @@ function Import() {
                                         id="checkbox"
                                         type="checkbox"
                                         name="checkbox"
+                                        onChange={handleColumnCheck}
                                         checked={title.status}
                                         className="w-4 h-4 text-teal-600 bg-gray-100 border-darkgreen rounded"
                                     />
@@ -185,8 +207,8 @@ function Import() {
                                         id="checkbox"
                                         type="checkbox"
                                         name="checkbox"
-                                        onChange={handleCheck}
-                                        checked={allRows}
+                                        onChange={handleRowCheck}
+                                        checked={phone.statut}
                                         className="w-4 h-4 text-teal-600 bg-gray-100 border-darkgreen rounded"
                                     />
                                 </td>
