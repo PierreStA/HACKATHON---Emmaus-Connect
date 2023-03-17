@@ -58,7 +58,7 @@ export default function Menu() {
                     className="px-3 py-2 flex items-center text-base uppercase font-bold leading-snug text-black hover:opacity-75"
                     href="#pablo"
                   >
-                    Base de donnée
+                    Base de données
                   </NavLink>
                 </ul>
               </ul>

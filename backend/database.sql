@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema emausconnect
 -- -----------------------------------------------------
-
+DROP SCHEMA IF EXISTS `emausconnect` ;
 -- -----------------------------------------------------
 -- Schema emausconnect
 -- -----------------------------------------------------
@@ -20,6 +20,8 @@ USE `emausconnect` ;
 -- -----------------------------------------------------
 -- Table `emausconnect`.`etat`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `emausconnect`.`etat`
+
 CREATE TABLE IF NOT EXISTS `emausconnect`.`etat` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `etat` VARCHAR(45) NOT NULL,
@@ -32,6 +34,8 @@ INSERT INTO `emausconnect`.`etat` (`id`, `etat`) VALUES ('1', 'DEEE'), ('2', 'RÃ
 -- -----------------------------------------------------
 -- Table `emausconnect`.`smartphone`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `emausconnect`.`smartphone`
+
 CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `marque` VARCHAR(255) NOT NULL,
@@ -55,10 +59,12 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stockage`, `indice_antutu`, `ecran`, `reseau`, `android`, `chargeurcable`, `idetat`, `image_source`, `code_model`) VALUES ('1', 'Samsung', 'Galaxy S23', '8', '128', '1198962', '6.1', '5', '13', '1', '4', 'galaxyS23.jpeg', 'SM-S911BZKDEUB'), ('2', 'Oppo', 'Reno 2Z', '8', '128', '213989', '6.5', '4', '10', '2', '2', 'oppoReno2Z.jpeg', `RENO2Z128 N`), ('3', 'Xiaomi', 'Redmi Note 11', '4', '64', '248639', '6.4', '4', '11', '1', '5', 'xiaomiRedmiNote11.jpeg', '2201117TG');
+INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stockage`, `indice_antutu`, `ecran`, `reseau`, `android`, `chargeurcable`, `idetat`, `image_source`, `code_model`) VALUES ('1', 'Samsung', 'Galaxy S23', '8', '128', '1198962', '6.1', '5', '13', '1', '4', 'galaxyS23.jpeg', 'SM-S911BZKDEUB'), ('2', 'Oppo', 'Reno 2Z', '8', '128', '213989', '6.5', '4', '10', '2', '2', 'oppoReno2Z.jpeg', 'RENO2Z128 N'), ('3', 'Xiaomi', 'Redmi Note 11', '4', '64', '248639', '6.4', '4', '11', '1', '5', 'xiaomiRedmiNote11.jpeg', '2201117TG');
 -- -----------------------------------------------------
 -- Table `emausconnect`.`user`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `emausconnect`.`user`
+
 CREATE TABLE IF NOT EXISTS `emausconnect`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(255) NOT NULL,
