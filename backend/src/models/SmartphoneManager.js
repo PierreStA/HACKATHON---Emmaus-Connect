@@ -13,7 +13,7 @@ class SmartphoneManager extends AbstractManager {
 
   insert(smartphone) {
     return this.database.query(
-      `insert into ${this.table} (marque, modele, ram, stockage, indice_antutu, ecran, reseau, android, chargeurcable, idetat) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (marque, modele, ram, stockage, indice_antutu, ecran, reseau, android, chargeurcable, idetat) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         smartphone.marque,
         smartphone.modele,
