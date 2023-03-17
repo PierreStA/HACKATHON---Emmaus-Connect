@@ -51,8 +51,8 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `image_source` varchar(255),
   `code_model` VARCHAR(45),
   `categorie` VARCHAR(45),
-  `emmausId` VARCHAR(45),
-  `ponderation` INT,
+  ``
+
 
   PRIMARY KEY (`id`, `idetat`),
   INDEX `fk_smartphone_etat_idx` (`idetat` ASC) VISIBLE,

@@ -11,6 +11,8 @@ module.exports = {
         purple: "#272350",
         red: "#E53750",
         yellow: "#FFAB1D",
+        darkBlue: "#090979",
+        lightBlue: "#00d4ff"
       },
       dropShadow: {
         button: "0 20px 40px rgba(0, 0, 0, 0.1)",
