@@ -14,7 +14,7 @@ function Smartphones({
   categorie,
 }) {
   return (
-    <div className="grid grid-cols-2 w-full rounded-lg shadow-md p-4">
+    <div className="grid grid-cols-2 w-full rounded-lg shadow-md p-4 bg-white">
       <div>
         <p>
           <span className="font-medium text-darkgreen"> Marque : </span>

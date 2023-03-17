@@ -32,7 +32,7 @@ function Import() {
   };
 
   return (
-    <div className="relative ">
+    <div className="relative">
       <div className="fixed w-screen z-10">
         <Navbar />
       </div>
