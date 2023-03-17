@@ -29,7 +29,7 @@ function Antutu({ setModele, setIndiceAntutu }) {
 
   const prepareJsonData = (data) => {
     // eslint-disable-next-line
-    const json = data.map((line, index) => {
+    const json = data.slice(0, 8).map((line, index) => {
       if (index > 0) {
         let obj = {};
         data[0].forEach((el, j) => (obj = { ...obj, [el]: line[j] }));
@@ -59,7 +59,13 @@ function Antutu({ setModele, setIndiceAntutu }) {
   }, []);
 
   return (
-    <div className="flex flex-col m-4 p-4 justify-center items-center gap-4">
+    <div
+      className="flex flex-col m-4 p-4 justify-center items-center gap-4
+      rounded-lg
+      shadow-lg
+      h-fit
+      hover:drop-shadow-xl"
+    >
       <label
         htmlFor="model"
         className="font-medium text-xl uppercase tracking-widest"
