@@ -10,7 +10,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema emausconnect
 -- -----------------------------------------------------
-
+DROP SCHEMA IF EXISTS `emausconnect` ;
 -- -----------------------------------------------------
 -- Schema emausconnect
 -- -----------------------------------------------------
@@ -20,6 +20,8 @@ USE `emausconnect` ;
 -- -----------------------------------------------------
 -- Table `emausconnect`.`etat`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `emausconnect`.`etat`;
+
 CREATE TABLE IF NOT EXISTS `emausconnect`.`etat` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `etat` VARCHAR(45) NOT NULL,
@@ -32,6 +34,8 @@ INSERT INTO `emausconnect`.`etat` (`id`, `etat`) VALUES ('1', 'DEEE'), ('2', 'RÃ
 -- -----------------------------------------------------
 -- Table `emausconnect`.`smartphone`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `emausconnect`.`smartphone`;
+
 CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `marque` VARCHAR(255) NOT NULL,
@@ -47,8 +51,8 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `image_source` varchar(255),
   `code_model` VARCHAR(45),
   `categorie` VARCHAR(45),
-  `emmausId` VARCHAR(45),
-  `ponderation` INT,
+  ``
+
 
   PRIMARY KEY (`id`, `idetat`),
   INDEX `fk_smartphone_etat_idx` (`idetat` ASC) VISIBLE,
@@ -63,6 +67,8 @@ INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stock
 -- -----------------------------------------------------
 -- Table `emausconnect`.`user`
 -- -----------------------------------------------------
+DROP TABLE IF EXISTS `emausconnect`.`user`;
+
 CREATE TABLE IF NOT EXISTS `emausconnect`.`user` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `firstname` VARCHAR(255) NOT NULL,

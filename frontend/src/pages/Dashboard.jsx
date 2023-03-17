@@ -13,9 +13,9 @@ function Dashboard() {
   }, []);
 
   return (
-    <div className="bg-gradient-to-r from-darkBlue to-lightBlue">
+    <div className="bg-slate-100">
       <Navbar />
-      <h1 className=" flex justify-center m-8 text-xl font-semibold uppercase tracking-widest">
+      <h1 className=" flex justify-center m-8 text-xl font-semibold uppercase tracking-widest ">
         Nos smartphones
       </h1>
       <div className="grid gap-4 grid-cols-2 p-6">
