@@ -29,8 +29,8 @@ function Calculette() {
   const [valA, setValA] = useState(0);
   const [valM, setValM] = useState(0);
   const [valS, setValS] = useState(0);
-  const [noteTel, setNoteTel] = useState(null);
-  const [ponderation, setPonderation] = useState();
+  const [noteTel, setNoteTel] = useState(0);
+  const [ponderation, setPonderation] = useState(0);
   const [categorie, setCategorie] = useState(null);
 
   const handleSubmit = (e) => {

@@ -46,6 +46,10 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
   `idetat` INT NOT NULL,
   `image_source` varchar(255),
   `code_model` VARCHAR(45),
+  `categorie` VARCHAR(45),
+  `emmausId` VARCHAR(45),
+  `ponderation` INT,
+
   PRIMARY KEY (`id`, `idetat`),
   INDEX `fk_smartphone_etat_idx` (`idetat` ASC) VISIBLE,
   CONSTRAINT `fk_smartphone_etat`
@@ -55,7 +59,7 @@ CREATE TABLE IF NOT EXISTS `emausconnect`.`smartphone` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
-INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stockage`, `indice_antutu`, `ecran`, `reseau`, `android`, `chargeurcable`, `idetat`, `image_source`, `code_model`) VALUES ('1', 'Samsung', 'Galaxy S23', '8', '128', '1198962', '6.1', '5', '13', '1', '4', 'galaxyS23.jpeg', 'SM-S911BZKDEUB'), ('2', 'Oppo', 'Reno 2Z', '8', '128', '213989', '6.5', '4', '10', '2', '2', 'oppoReno2Z.jpeg', `RENO2Z128 N`), ('3', 'Xiaomi', 'Redmi Note 11', '4', '64', '248639', '6.4', '4', '11', '1', '5', 'xiaomiRedmiNote11.jpeg', '2201117TG');
+INSERT INTO `emausconnect`.`smartphone` (`id`, `marque`, `modele`, `ram`, `stockage`, `indice_antutu`, `ecran`, `reseau`, `android`, `chargeurcable`, `idetat`, `image_source`, `code_model`, `categorie`) VALUES ('1', 'Samsung', 'Galaxy S23', '8', '128', '1198962', '6.1', '5', '13', '1', '4', 'galaxyS23.jpeg', 'SM-S911BZKDEUB', '5-P'), ('2', 'Oppo', 'Reno 2Z', '8', '128', '213989', '6.5', '4', '10', '2', '2', 'oppoReno2Z.jpeg', 'RENO2Z128 N', '4-A'), ('3', 'Xiaomi', 'Redmi Note 11', '4', '64', '248639', '6.4', '4', '11', '1', '5', 'xiaomiRedmiNote11.jpeg', '2201117TG', '3-B'), ('4', 'Samsung', 'Galaxy Z Flip4', '8', '128', '932974', '6.7', '5', '12', '1', '3', 'zflip4.jpeg', 'SM-F721BZAGEUB', '4-A'), ('5', 'Xiaomi', 'Redmi A1+', '2', '32', '95000', '6.5', '4', '12', '2', '5', 'redmiA1+.jpeg', '220733SFG', '2-C');
 -- -----------------------------------------------------
 -- Table `emausconnect`.`user`
 -- -----------------------------------------------------
