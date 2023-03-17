@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import axios from "axios";
 import QRCode from "qrcode";
 import JsPDF from "jspdf";
 import Navbar from "../components/Navbar";
@@ -144,14 +145,12 @@ function Calculette() {
       setCategorie("5-Premium");
     }
   }, [noteTel]);
-  
+
   // const handleInputChange = (e) => {
   //   setFormData({ ...formData, [e.target.name]: e.target.value });
   // };
   console.log(formData);
   // console.log(noteTel);
-
-  
 
   return (
     <div className="flex flex-col  text-left h-screen">
